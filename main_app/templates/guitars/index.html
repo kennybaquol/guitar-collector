@@ -4,7 +4,7 @@
 <h1>Guitar List</h1>
 
 {% for guitar in guitars %}
-  <a href="/guitars">
+  <a href="/guitars/{{ guitar.id }}">
     <div class="card">
         <div class="card-content">
             <span class="card-title">{{ guitar.brand }}</span>
