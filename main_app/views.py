@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Guitar
 
 # View functions
@@ -15,3 +16,7 @@ def guitars_index(request):
 def guitars_detail(request, guitar_id):
   guitar = Guitar.objects.get(id=guitar_id)
   return render(request, 'guitars/detail.html', { 'guitar': guitar })
+
+class GuitarCreate(CreateView):
+  model = Guitar
+  fields = '__all__'
