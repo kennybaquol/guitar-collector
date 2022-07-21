@@ -20,3 +20,4 @@ def guitars_detail(request, guitar_id):
 class GuitarCreate(CreateView):
   model = Guitar
   fields = '__all__'
+  success_url = '/guitars/'
