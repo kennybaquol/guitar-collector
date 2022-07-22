@@ -41,18 +41,61 @@
     </table>
   </div>
 </div>
+<!-- This is all new markup to be added just above the <script> tag -->
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ guitar.brand }}'s Players</h3>
+    {% if guitar.players.count %}
+    {% for player in guitar.players.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          <span>{{ player.band }}</span> {{ player.name }}
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h5>No Players :(</h5>
+    {% endif %}
+  </div>
+  <!-- Available players will come after this line -->
+  <div class="col s6">
+    <h3>Available Players</h3>
+    {% if players.count %}
+    {% for player in players.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          <span>{{ player.band }}</span> {{ player.name }}
+        </span>
+      </div>
+      <div class="card-action">
+        <form action="{% url 'assoc_player' guitar.id player.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Add</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h5>{{guitar.brand}} Already Has All Players Available</h5>
+    {% endif %}
+  </div>
 
-<script>
-  const dateEl = document.getElementById('id_date');
-  M.Datepicker.init(dateEl, {
-    format: 'yyyy-mm-dd',
-    defaultDate: new Date(),
-    setDefaultDate: true,
-    autoClose: true
-  });
 
-  // add additional JS to initialize select below
-  const selectEl = document.getElementById('id_tuning');
-  M.FormSelect.init(selectEl);
-</script>
-{% endblock %}
+  <script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+
+    // add additional JS to initialize select below
+    const selectEl = document.getElementById('id_tuning');
+    M.FormSelect.init(selectEl);
+  </script>
+  {% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = [
     path('guitars/<int:pk>/update/', views.GuitarUpdate.as_view(), name='guitars_update'),
     path('guitars/<int:pk>/delete/', views.GuitarDelete.as_view(), name='guitars_delete'),
     path('guitars/<int:guitar_id>/add_tuned/', views.add_tuned, name='add_tuned'),
+    path('guitars/<int:guitar_id>/assoc_player/<int:player_id>/', views.assoc_player, name='assoc_player'),
     path('players/', views.PlayerList.as_view(), name='players_index'),
     path('players/<int:pk>/', views.PlayerDetail.as_view(), name='players_detail'),
     path('players/create/', views.PlayerCreate.as_view(), name='players_create'),
