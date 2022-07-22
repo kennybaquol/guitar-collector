@@ -60,7 +60,7 @@ class PlayerCreate(CreateView):
 
 class PlayerUpdate(UpdateView):
   model = Player
-  fields = ['name', 'color']
+  fields = ['name', 'band']
 
 class PlayerDelete(DeleteView):
   model = Player

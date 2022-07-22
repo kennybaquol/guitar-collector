@@ -16,7 +16,7 @@ class Player(models.Model):
     return self.name
 
   def get_absolute_url(self):
-    return reverse('toys_detail', kwargs={'pk': self.id})
+    return reverse('players_detail', kwargs={'pk': self.id})
 
 # Create your models here.
 class Guitar(models.Model):
