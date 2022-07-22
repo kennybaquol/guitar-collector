@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Guitar
+from django.views.generic import ListView, DetailView
+from .models import Guitar, Player
 from .forms import TunedForm
 
 # View functions
@@ -46,3 +47,21 @@ class GuitarUpdate(UpdateView):
 class GuitarDelete(DeleteView):
   model = Guitar
   success_url = '/guitars/'
+
+class PlayerList(ListView):
+  model = Player
+
+class PlayerDetail(DetailView):
+  model = Player
+
+class PlayerCreate(CreateView):
+  model = Player
+  fields = '__all__'
+
+class PlayerUpdate(UpdateView):
+  model = Player
+  fields = ['name', 'color']
+
+class PlayerDelete(DeleteView):
+  model = Player
+  success_url = '/players/'
